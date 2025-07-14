@@ -15,6 +15,8 @@ It is essentially a reboot of the SpecFlow project, and it leverages Gherkin
 
 NUnit
 
+DotNetEnv
+
 ReqnRoll
 
 ReqnRoll.NUnit
@@ -24,6 +26,7 @@ Selenium.WebDriver
 Selenium.ChromeDriver
 
 Selenium.WebDriver.MSEdgeDriver
+
 WebDriverManager
 
 
