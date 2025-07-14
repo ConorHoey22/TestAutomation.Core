@@ -14,10 +14,16 @@ It is essentially a reboot of the SpecFlow project, and it leverages Gherkin
 **Install Nuget Packages **
 
 NUnit
+
 ReqnRoll
+
 ReqnRoll.NUnit
+
 Selenium.WebDriver
+
 Selenium.ChromeDriver
+
+Selenium.WebDriver.MSEdgeDriver
 WebDriverManager
 
 
