@@ -4,20 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestAutomation.Core.Resources;
 
 namespace TestAutomation.Core.Pages
 {
         public class LoginPage
         {
             private readonly IWebDriver _driver;
-            private const string LoginUrl = "https://www.saucedemo.com/v1/";
+            private readonly ApplicationSettings _applicationSettings;
+            private readonly FrameworkSettings _frameworkSettings;
 
-            private const string username = "standard_user";
-            private const string password = "secret_sauce";
+            //private const string LoginUrl = "https://www.saucedemo.com/v1/";
+
 
             public LoginPage(IWebDriver driver)
             {
                 _driver = driver;
+                _applicationSettings = new ApplicationSettings();
+                _applicationSettings.LoadApplicationSettings(); // Must call this
             }
 
             private IWebElement UsernameInput => _driver.FindElement(By.Id("user-name"));
@@ -27,20 +31,20 @@ namespace TestAutomation.Core.Pages
 
             public void NavigateToLoginPage()
             {
-                _driver.Navigate().GoToUrl(LoginUrl);
+                 _driver.Navigate().GoToUrl(_applicationSettings.url);
             }
 
 
-            public void EnterUsername(string username)
+            public void EnterUsername()
             {
                 UsernameInput.Clear();
-                UsernameInput.SendKeys(username);
+                UsernameInput.SendKeys(_applicationSettings.username);
             }
 
-            public void EnterPassword(string password)
+            public void EnterPassword()
             {
                 PasswordInput.Clear();
-                PasswordInput.SendKeys(password);
+                PasswordInput.SendKeys(_applicationSettings.password);
             }
 
             public void ClickLogin()
@@ -51,8 +55,8 @@ namespace TestAutomation.Core.Pages
             public void LoginAs(string username, string password)
             {
                 NavigateToLoginPage();
-                EnterUsername(username);
-                EnterPassword(password);
+                EnterUsername();
+                EnterPassword();
                 ClickLogin();
             }
         }

@@ -9,22 +9,24 @@ using System.Text;
 using System.Threading.Tasks;
 using TestAutomation.Core.Abstraction;
 using TestAutomation.Core.Drivers;
+using TestAutomation.Core.Reports;
+using TestAutomation.Core.Resources;
 
 namespace TestAutomation.Core.Container
 {
  
     public class ContainerConfig
     {
-        //public static IObjectContainer SetContainer(IObjectContainer iobjectContainer)
-        //{
-        //    iobjectContainer.RegisterTypeAs<ChromeWebDriver, IChromeWebDriver>();
-
-        //    return iobjectContainer;
-        //}
-
+     
         public void ConfigureContainer(IObjectContainer container)
         {
             container.RegisterTypeAs<ChromeWebDriver, IChromeWebDriver>();
+            container.RegisterTypeAs<EdgeWebDriver, IEdgeWebDriver>();
+            container.RegisterTypeAs<ExtentReport, IExtentReport>();    
+            container.RegisterTypeAs<ExtentFeatureReport,IExtentFeatureReport>();
+            container.RegisterTypeAs<ApplicationSettings, IApplicationSettings>();
+            container.RegisterTypeAs<FrameworkSettings,IFrameworkSettings>();
+
             // Register more dependencies here as needed
         }
     }

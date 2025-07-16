@@ -27,11 +27,8 @@ namespace TestAutomation.Core.Steps
         public void WhenTheUserEntersValidCredentials()
         {
 
-            string username = "standard_user";
-            string password = "secret_sauce";
-
-            _loginPage.EnterUsername(username);
-            _loginPage.EnterPassword(password);
+            _loginPage.EnterUsername();
+            _loginPage.EnterPassword();
             _loginPage.ClickLogin();
         }
 
