@@ -28,24 +28,22 @@ Ensure the following NuGet packages are installed in your project:
 - Selenium.WebDriver.MSEdgeDriver
 - WebDriverManager
 
-## 🚀 File Structure
-
-/TestAutomation.Core
-│
-├── Abstraction/              # Interfaces  (Abstraction)
-├── Container/                # Dependency injection 
-├── DriverController/         # Manages WebDrivers sessions  , Switch statement to determine the browser entered within Config
-├── Drivers/                  # WebDriver classes - e.g. Chrome , Edge 
-├── Features/                 # Gherkin .feature files
-├── Hooks/                    # Test initialization - e.g. BeforeScenario , AfterScenario
-├── Pages/                    # Page Object Models (POM)
-├── Params/                   # Parameter and Configuration Methods 
-├── Reports/                  # Reporting utilities or test results
-├── Resources/                # ApplicationSettings and Framework settings classes
-├── Runner/                   # Test execution entry points
-├── Steps/                    # Step definitions
-├── applicationSettings.env   # Application environment config
-└── frameworkSettings.env     # Framework-specific config
+| Folders                   | Description                                              |
+| ------------------------- | -------------------------------------------------------- |
+| `Abstraction/`            | Interfaces for abstraction                               |
+| `Container/`              | Dependency injection setup                               |
+| `DriverController/`       | Manages WebDriver sessions and browser logic             |
+| `Drivers/`                | WebDriver classes (e.g., Chrome, Edge)                   |
+| `Features/`               | Gherkin `.feature` files for BDD                         |
+| `Hooks/`                  | Test lifecycle hooks (`BeforeScenario`, `AfterScenario`) |
+| `Pages/`                  | Page Object Model (POM) classes                          |
+| `Params/`                 | Parameter and configuration methods                      |
+| `Reports/`                | Reporting utilities and test results                     |
+| `Resources/`              | Application and framework settings classes               |
+| `Runner/`                 | Test execution entry points                              |
+| `Steps/`                  | Step definition implementations                          |
+| `applicationSettings.env` | App-level environment configuration                      |
+| `frameworkSettings.env`   | Framework-specific environment configuration             |
 
 
 
