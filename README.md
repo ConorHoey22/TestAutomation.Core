@@ -28,6 +28,10 @@ Ensure the following NuGet packages are installed in your project:
 - Selenium.WebDriver.MSEdgeDriver
 - WebDriverManager
 
+  
+
+## 📁 Project Structure
+
 | Folders                   | Description                                              |
 | ------------------------- | -------------------------------------------------------- |
 | `Abstraction/`            | Interfaces for abstraction                               |
@@ -44,6 +48,11 @@ Ensure the following NuGet packages are installed in your project:
 | `Steps/`                  | Step definition implementations                          |
 | `applicationSettings.env` | App-level environment configuration                      |
 | `frameworkSettings.env`   | Framework-specific environment configuration             |
+
+
+## 📁 Test Cases 
+
+
 
 
 
