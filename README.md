@@ -1,33 +1,35 @@
+# 🧪 Test Automation Framework
 
+A robust **Test Automation Framework** built using **C#**, **.NET**, **Selenium**, and **Reqnroll** (Cucumber-style BDD for .NET). Designed for clean test design, maintainability, and scalability.
 
+---
 
-Test Automation 
+## 🚀 Tech Stack
 
-Language : C# , .NET
-Selenium 
+- **Language:** C#, .NET  
+- **Automation Tool:** Selenium WebDriver  
+- **BDD Framework:** Reqnroll (SpecFlow reboot using Gherkin syntax)  
+- **Test Runner:** NUnit  
+- **Environment Management:** DotNetEnv  
 
-Reqnroll Cucumber - Yes, Reqnroll is a BDD (Behavior Driven Development) framework for .NET, and it is often described as a "Cucumber-style" framework.
-It is essentially a reboot of the SpecFlow project, and it leverages Gherkin
+---
 
+## 📦 NuGet Packages to Install
 
+Ensure the following NuGet packages are installed in your project:
 
-**Install Nuget Packages **
-
+# Core testing packages
 NUnit
-
 DotNetEnv
 
-ReqnRoll
+# BDD with Reqnroll
+Reqnroll
+Reqnroll.NUnit
 
-ReqnRoll.NUnit
-
+# Selenium WebDriver support
 Selenium.WebDriver
-
 Selenium.ChromeDriver
-
 Selenium.WebDriver.MSEdgeDriver
 
+# Driver management
 WebDriverManager
-
-
-File Structure
