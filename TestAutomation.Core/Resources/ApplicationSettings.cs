@@ -18,6 +18,12 @@ namespace TestAutomation.Core.Resources
         public string username { get; set; }
         public string password { get; set; }
 
+        public ApplicationSettings()
+        {
+            LoadApplicationSettings(); // 🟢 Ensure environment is loaded when the class is created
+        }
+
+
         public void LoadApplicationSettings()
         {
 

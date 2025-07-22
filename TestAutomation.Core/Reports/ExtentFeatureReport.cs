@@ -9,29 +9,62 @@ using TestAutomation.Core.Abstraction;
 namespace TestAutomation.Core.Reports
 {
     public class ExtentFeatureReport : IExtentFeatureReport
-    { 
-            IDefaultVariables _idefaultVariables;
-            AventStack.ExtentReports.ExtentReports extentReports;
-            public ExtentFeatureReport(IDefaultVariables idefaultVariables)
+    {
+        private readonly IDefaultVariables _idefaultVariables;
+        private AventStack.ExtentReports.ExtentReports _extentReports;
+
+        public ExtentFeatureReport(IDefaultVariables idefaultVariables)
+        {
+            _idefaultVariables = idefaultVariables;
+            _extentReports = new AventStack.ExtentReports.ExtentReports();
+
+            InitiliazeExtentReport();
+        }
+
+        public void InitiliazeExtentReport()
+        {
+            string reportPath = _idefaultVariables.getExtentReport;
+
+            string reportDirectory = Path.GetDirectoryName(reportPath);
+            if (!Directory.Exists(reportDirectory))
             {
-                _idefaultVariables = idefaultVariables;
+                Directory.CreateDirectory(reportDirectory);
             }
 
-            public void InitiliazeExtentReport()
+
+            var reporter = new ExtentHtmlReporter(reportPath);
+            _extentReports = new AventStack.ExtentReports.ExtentReports();
+            _extentReports.AttachReporter(reporter);
+        }
+
+
+        public AventStack.ExtentReports.ExtentReports GetExtentReports()
+        {
+            if (_extentReports == null)
             {
-                ExtentHtmlReporter extentHtmlReporter = new ExtentHtmlReporter(_idefaultVariables.getExtentReport);
-                extentReports = new AventStack.ExtentReports.ExtentReports();
-                extentReports.AttachReporter(extentHtmlReporter);
+                Console.WriteLine("ExtentReports is not initialized. Please call InitiliazeExtentReport first.");
+            }
+            else
+            {
+                Console.WriteLine("ExtentReports is initialized successfully.");
             }
 
-            public AventStack.ExtentReports.ExtentReports GetExtentReports()
-            {
-                return extentReports;
-            }
+            return _extentReports;
+        }
 
-            public void FlushExtent()
+        public void FlushExtent()
+        {
+            _extentReports.Flush();
+
+            if (File.Exists(_idefaultVariables.getExtentReport))
             {
-                extentReports.Flush();
+                Console.WriteLine($"Extent report flushed successfully to {_idefaultVariables.getExtentReport}");
+            }
+            else
+            {
+                Console.WriteLine($"Extent report file not found at {_idefaultVariables.getExtentReport}. Please check the path.");
             }
         }
+    }
+
 }

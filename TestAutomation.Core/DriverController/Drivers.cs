@@ -1,26 +1,30 @@
 ﻿using OpenQA.Selenium;
+using Reqnroll;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using TestAutomation.Core.Abstraction;
 
 namespace TestAutomation.Core.DriverController
 {
-    public class Drivers
+    [Binding]
+    public class Drivers : IDrivers
     {
+
+
         IFrameworkSettings _frameworkSettings;
         IChromeWebDriver _ichromeWebDriver;
         IEdgeWebDriver _iedgeWebDriver;
         IWebDriver _iwebDriver;
 
 
-        public Drivers(IChromeWebDriver ichromeWebDriver, IEdgeWebDriver iedgeWebDriver)
+        public Drivers(IChromeWebDriver ichromeWebDriver, IEdgeWebDriver iedgeWebDriver, IFrameworkSettings iframeworksettings)
         {
             _ichromeWebDriver = ichromeWebDriver;
             _iedgeWebDriver = iedgeWebDriver;
+            _frameworkSettings = iframeworksettings;
         }
 
         public IWebDriver GetWebDriver()
@@ -30,6 +34,25 @@ namespace TestAutomation.Core.DriverController
                 GetNewWebDriver();
             }
             return _iwebDriver;
+        }
+
+        public void StartFreshDriver()
+        {
+            if (_iwebDriver != null)
+            {
+                try
+                {
+                    _iwebDriver.Quit();
+                    _iwebDriver.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Exception while closing the browser: " + ex.Message);
+                }
+               
+                GetNewWebDriver();
+            }
+
         }
         public void GetNewWebDriver()
         {
@@ -61,4 +84,5 @@ namespace TestAutomation.Core.DriverController
             return ((ITakesScreenshot)GetWebDriver()).GetScreenshot().AsBase64EncodedString;
         }
     }
+
 }

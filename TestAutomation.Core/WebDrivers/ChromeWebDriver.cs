@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using TestAutomation.Core.Abstraction;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace TestAutomation.Core.Drivers
+namespace TestAutomation.Core.WebDrivers
 {
     public class ChromeWebDriver : IChromeWebDriver
     {

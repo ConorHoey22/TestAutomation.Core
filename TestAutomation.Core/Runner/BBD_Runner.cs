@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestPlatform.PlatformAbstractions.Interfaces;
+﻿using AventStack.ExtentReports;
+using Microsoft.VisualStudio.TestPlatform.PlatformAbstractions.Interfaces;
 using NUnit.Framework.Internal;
 using Reqnroll;
 using Reqnroll.BoDi;
@@ -9,27 +10,45 @@ using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using TestAutomation.Core.Abstraction;
 using TestAutomation.Core.Container;
+using TestAutomation.Core.Reports;
 
 namespace TestAutomation.Core.Runner
 {
+
     [Binding]
     public class BBD_Runner
     {
+        private readonly IExtentReport _report;
 
 
-        [BeforeTestRun]
-        public static void BeforeTestRun()
+        public BBD_Runner(IObjectContainer container)
         {
+            _report = container.Resolve<IExtentReport>();  
 
-            //Can be used to set up the environment before any tests are run.
-            // Config file loading
 
-            //Setting environment variables
 
-            //Logging configuration
-
-            //Launching external test services(like a local server or database)
+            if(_report == null)
+            {
+                Console.WriteLine("Extent Report is not initialized. Please check the configuration.");
+            }
+            else
+            {
+                Console.WriteLine("Extent Report is initialized successfully.");
+            }
         }
+
+        //[BeforeFeature]
+        //public static void BeforeFeature(FeatureContext fc, IObjectContainer container)
+        //{
+        //   var report = container.Resolve<IExtentReport>();
+        //   report.CreateFeature(fc.FeatureInfo.Title);
+        //   fc["iextentreport"] = report;
+        //}
+
+
+
+
     }
 }

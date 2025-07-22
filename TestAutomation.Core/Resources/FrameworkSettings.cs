@@ -23,7 +23,10 @@ namespace TestAutomation.Core.Resources
         public bool StepScreenshot { get; set; }
 
 
-
+        public FrameworkSettings()
+        {
+            LoadConfiguration(); // 🟢 Ensure environment is loaded when the class is created
+        }
         public void LoadConfiguration()
         {
            // Load .env variables
@@ -39,11 +42,12 @@ namespace TestAutomation.Core.Resources
             {
                 // Load the environment variables from the file 
                 Env.Load(envPath);
-                BrowserType = Environment.GetEnvironmentVariable("Browser");
+                BrowserType = Environment.GetEnvironmentVariable("BROWSER_TYPE");
                 BrowserVersion = Environment.GetEnvironmentVariable("BROWSER_VERSION");
                 GridHubUrl = Environment.GetEnvironmentVariable("GRID_HUB_URL");
                 ExtentReportPortalUrl = Environment.GetEnvironmentVariable("EXTENT_REPORT_PORTAL_URL");
                 ExtentReportToPortal = Environment.GetEnvironmentVariable("EXTENT_REPORT_TO_PORTAL");
+                StepScreenshot = Environment.GetEnvironmentVariable("STEP_SCREENSHOT")?.ToLower() == "true" ? true : false;
 
 
             }

@@ -10,7 +10,7 @@ using OpenQA.Selenium.Edge;
 using WebDriverManager;
 using TestAutomation.Core.Abstraction;
 
-namespace TestAutomation.Core.Drivers
+namespace TestAutomation.Core.WebDrivers
 {
     public class EdgeWebDriver : IEdgeWebDriver
     {
