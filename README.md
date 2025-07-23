@@ -40,6 +40,7 @@ Ensure the following NuGet packages are installed in your project:
 | `Drivers/`                | WebDriver classes (e.g., Chrome, Edge)                   |
 | `Features/`               | Gherkin `.feature` files for BDD                         |
 | `Hooks/`                  | Test lifecycle hooks (`BeforeScenario`, `AfterScenario`) |
+|`Runner/`                  | Test lifecycle hooks (`BeforeScenario`, `AfterScenario`) |
 | `Pages/`                  | Page Object Model (POM) classes                          |
 | `Params/`                 | Parameter and configuration methods                      |
 | `Reports/`                | Reporting utilities and test results                     |
