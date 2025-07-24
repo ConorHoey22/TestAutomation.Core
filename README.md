@@ -27,6 +27,7 @@ Ensure the following NuGet packages are installed in your project:
 - Selenium.ChromeDriver
 - Selenium.WebDriver.MSEdgeDriver
 - WebDriverManager
+-  ExtentReportss
 
   
 
@@ -52,6 +53,12 @@ Ensure the following NuGet packages are installed in your project:
 
 
 ## 📁 Test Cases 
+
+Login - 
+
+Extent Reports  
+<img width="2546" height="623" alt="image" src="https://github.com/user-attachments/assets/b8d5338c-8fb6-457e-bc79-461d5ab9c955" />
+
 
 
 
