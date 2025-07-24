@@ -27,7 +27,7 @@ Ensure the following NuGet packages are installed in your project:
 - Selenium.ChromeDriver
 - Selenium.WebDriver.MSEdgeDriver
 - WebDriverManager
--  ExtentReportss
+-  ExtentReports
 
   
 
