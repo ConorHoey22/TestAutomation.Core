@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using Reqnroll;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestAutomation.Core.Abstraction;
+using TestAutomation.Core.WebDrivers;
 
 namespace TestAutomation.Core.DriverController
 {
@@ -50,7 +52,7 @@ namespace TestAutomation.Core.DriverController
                     Console.WriteLine("Exception while closing the browser: " + ex.Message);
                 }
                
-                GetNewWebDriver();
+                _iwebDriver = new ChromeDriver(); // Default to ChromeDriver if not set
             }
 
         }

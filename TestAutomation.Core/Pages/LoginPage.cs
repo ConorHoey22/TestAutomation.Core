@@ -14,15 +14,16 @@ namespace TestAutomation.Core.Pages
             private readonly ApplicationSettings _applicationSettings;
             private readonly FrameworkSettings _frameworkSettings;
 
-            //private const string LoginUrl = "https://www.saucedemo.com/v1/";
+        //private const string LoginUrl = "https://www.saucedemo.com/v1/";
 
 
-            public LoginPage(IWebDriver driver)
-            {
-                _driver = driver;
-                _applicationSettings = new ApplicationSettings();
-                _applicationSettings.LoadApplicationSettings(); // Must call this
-            }
+        public LoginPage(IWebDriver driver)
+        {
+            _driver = driver ?? throw new ArgumentNullException(nameof(driver));
+
+            _applicationSettings = new ApplicationSettings();
+            _applicationSettings.LoadApplicationSettings(); // Load credentials and URL if needed
+        }
 
             private IWebElement UsernameInput => _driver.FindElement(By.Id("user-name"));
             private IWebElement PasswordInput => _driver.FindElement(By.Id("password"));
@@ -31,7 +32,9 @@ namespace TestAutomation.Core.Pages
 
             public void NavigateToLoginPage()
             {
-                 _driver.Navigate().GoToUrl(_applicationSettings.url);
+            //  _driver.Navigate().GoToUrl(_applicationSettings.url);
+
+            _driver.Navigate().GoToUrl("https://www.saucedemo.com/");
             }
 
 

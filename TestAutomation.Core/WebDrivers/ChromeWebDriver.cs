@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Reqnroll.BoDi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,14 @@ namespace TestAutomation.Core.WebDrivers
 {
     public class ChromeWebDriver : IChromeWebDriver
     {
-        public ChromeWebDriver()
+        IFrameworkSettings _frameworkSettings;
+        IApplicationSettings _applicationSettings;
+
+        IObjectContainer _container;    
+
+        public ChromeWebDriver(IObjectContainer container)
         {
-         
+            _frameworkSettings = container.Resolve<IFrameworkSettings>();
         }
 
         public IWebDriver CreateDriver()
@@ -35,6 +41,8 @@ namespace TestAutomation.Core.WebDrivers
             options.AddArgument("--disable-gpu");
             options.AddArgument("--no-sandbox");
             //     options.AddArgument("--headless"); // Uncomment if you want to run in headless mode ( Used for CI setup) 
+
+            options.AddUserProfilePreference("download.default_directory", _frameworkSettings.DataSetLocation);
             return options;
         }
 

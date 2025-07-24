@@ -9,16 +9,22 @@ using WebDriverManager.DriverConfigs.Impl;
 using OpenQA.Selenium.Edge;
 using WebDriverManager;
 using TestAutomation.Core.Abstraction;
+using TestAutomation.Core.Resources;
+using System.ComponentModel;
+using Reqnroll.BoDi;
 
 namespace TestAutomation.Core.WebDrivers
 {
     public class EdgeWebDriver : IEdgeWebDriver
     {
+        IFrameworkSettings _frameworkSettings;
+        IApplicationSettings _applicationSettings;
 
+        IObjectContainer _container;
 
-        public EdgeWebDriver()
+        public EdgeWebDriver(IObjectContainer container)
         {
-
+            _frameworkSettings = container.Resolve<IFrameworkSettings>();
         }
 
         public IWebDriver CreateDriver()
@@ -43,6 +49,7 @@ namespace TestAutomation.Core.WebDrivers
 
             // Uncomment to run in headless mode (e.g., CI/CD)
             // options.AddArgument("--headless");
+            options.AddUserProfilePreference("download.default_directory", _frameworkSettings.DataSetLocation);
 
             return options;
         }

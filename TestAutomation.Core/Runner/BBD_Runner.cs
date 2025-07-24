@@ -20,16 +20,18 @@ namespace TestAutomation.Core.Runner
     [Binding]
     public class BBD_Runner
     {
+    
         private readonly IExtentReport _report;
+      
 
 
         public BBD_Runner(IObjectContainer container)
         {
-            _report = container.Resolve<IExtentReport>();  
+           _report = container.Resolve<IExtentReport>();
+          
 
 
-
-            if(_report == null)
+            if (_report == null)
             {
                 Console.WriteLine("Extent Report is not initialized. Please check the configuration.");
             }
@@ -39,13 +41,22 @@ namespace TestAutomation.Core.Runner
             }
         }
 
-        //[BeforeFeature]
-        //public static void BeforeFeature(FeatureContext fc, IObjectContainer container)
-        //{
-        //   var report = container.Resolve<IExtentReport>();
-        //   report.CreateFeature(fc.FeatureInfo.Title);
-        //   fc["iextentreport"] = report;
-        //}
+
+        public static void BeforeFeature(FeatureContext featureContext, IObjectContainer container)
+        {
+            Console.WriteLine("HOOK - BeforeFeature started");
+
+            try
+            {
+                var report = container.Resolve<IExtentReport>();
+                report.CreateFeature(featureContext.FeatureInfo.Title);
+                featureContext["iextentreport"] = report;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in BeforeFeature: {ex.Message}");
+            }
+        }
 
 
 

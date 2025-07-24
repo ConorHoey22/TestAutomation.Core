@@ -1,7 +1,6 @@
 ﻿using Reqnroll;
 using OpenQA.Selenium;
 using Reqnroll.BoDi;
-using Reqnroll;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,41 +24,60 @@ namespace TestAutomation.Core.BBD_Hooks
     public class BBD_Hooks
     {
         IDrivers _idrivers;
-        IWebDriver _iwebDriver;
+        private IWebDriver _iwebDriver;
 
         private readonly IObjectContainer _container;
         private readonly BBD_Runner _runner;
 
 
-        public BBD_Hooks(IObjectContainer container, IDrivers idriver, ScenarioContext scenarioContext, FeatureContext featureContext)
+        public BBD_Hooks(IObjectContainer container, ScenarioContext scenarioContext, FeatureContext featureContext)
         {
 
             _container = container;
-          
-        }
-
-        [BeforeTestRun]
-        public static void BeforeTestRun(IObjectContainer container)
-        {
-            var config = new ContainerConfig();
-            config.ConfigureContainer(container);
+            
+            _runner = _container.Resolve<BBD_Runner>();
 
         }
 
 
+     
         [BeforeFeature]
-        public static void BeforeFeature(FeatureContext featureContext , IObjectContainer container )
+        public static void BeforeFeature(FeatureContext featureContext, IObjectContainer container)
         {
+            Console.WriteLine("HOOK - BeforeFeature started");
+
             try
             {
+                // Ensure the container is not null
+                if (container == null)
+                {
+                    throw new ArgumentNullException(nameof(container), "The container is null.");
+                }
+                // Debug: Check if IExtentFeatureReport is registered
+                Console.WriteLine("Attempting to resolve IExtentFeatureReport...");
                 var extentFeatureReport = container.Resolve<IExtentFeatureReport>();
+                Console.WriteLine("IExtentFeatureReport resolved successfully.");
 
+    
+                if (extentFeatureReport == null)
+                {
+                    throw new InvalidOperationException("Failed to resolve IExtentFeatureReport. Ensure it is registered in the container.");
+                }
+
+                Console.WriteLine("HOOK - 1 started");
+
+                // Create ExtentReport
                 IExtentReport extentReport = new ExtentReport(extentFeatureReport);
+                Console.WriteLine("HOOK - 2 started");
+
+                // Store in FeatureContext
                 featureContext["iextentreport"] = extentReport;
             }
             catch (Exception ex)
             {
-                 Console.WriteLine("Exception in BeforeFeature: " + ex.Message + ex.StackTrace);
+                Console.WriteLine("HOOK - 3 started");
+                Console.WriteLine("Exception in BeforeFeature: " + ex.Message);
+                Console.WriteLine("Stack Trace: " + ex.StackTrace);
             }
         }
 
@@ -68,13 +86,16 @@ namespace TestAutomation.Core.BBD_Hooks
         [BeforeScenario(Order = 2)]
         public void BeforeScenario(IObjectContainer iobjectcontainer, ScenarioContext sc, FeatureContext fc)
         {
-
+            Console.WriteLine("HOOK - BeforeScenario started");
             try
             {
                 _idrivers = iobjectcontainer.Resolve<IDrivers>();
 
-                //Open a Fresh rowser for each scenario
+                //Open a Fresh Browser for each scenario
                 _idrivers.StartFreshDriver();
+
+                _iwebDriver = _idrivers.GetWebDriver();
+                _container.RegisterInstanceAs<IWebDriver>(_iwebDriver);
 
                 var extentReport = (IExtentReport)fc["iextentreport"];
                 string featureName = fc.FeatureInfo.Title;
@@ -92,6 +113,8 @@ namespace TestAutomation.Core.BBD_Hooks
         [AfterStep]
         public void AfterStep(IObjectContainer iobjectContainer , ScenarioContext scenarioContext, FeatureContext fc, IFrameworkSettings frameworkSettings)
         {
+
+            Console.WriteLine("HOOK - AfterStep started");
             try
             {
                 _idrivers = iobjectContainer.Resolve<IDrivers>();
@@ -129,6 +152,8 @@ namespace TestAutomation.Core.BBD_Hooks
         [AfterScenario]
         public void AfterScenario()
         {
+
+            Console.WriteLine("HOOK - AfterScenario started");
             try
             {
                 var extentFeatureReport = _container.Resolve<IExtentFeatureReport>();

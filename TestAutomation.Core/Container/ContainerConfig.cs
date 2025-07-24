@@ -13,28 +13,33 @@ using TestAutomation.Core.Reports;
 using TestAutomation.Core.Resources;
 using TestAutomation.Core.DriverController;
 using TestAutomation.Core.Params;
+using TestAutomation.Core.DIContainerConfig;
 
 namespace TestAutomation.Core.Container
 {
- 
+    [Binding]
     public class ContainerConfig
     {
-     
-        public void ConfigureContainer(IObjectContainer container)
+
+        [BeforeTestRun]
+        public static void BeforeTestRun(IObjectContainer iobjectcontainer)
         {
-          
-            container.RegisterTypeAs<ChromeWebDriver, IChromeWebDriver>();
-            container.RegisterTypeAs<EdgeWebDriver, IEdgeWebDriver>();
-            container.RegisterTypeAs<DefaultVariables, IDefaultVariables>();
-            container.RegisterTypeAs<ExtentReport, IExtentReport>();
-            container.RegisterTypeAs<ExtentFeatureReport,IExtentFeatureReport>();
-            container.RegisterTypeAs<ApplicationSettings, IApplicationSettings>();
-            container.RegisterTypeAs<FrameworkSettings, IFrameworkSettings>();
+            Console.WriteLine("Registering dependencies...");
 
+            iobjectcontainer.RegisterTypeAs<DefaultVariables, IDefaultVariables>();
+            iobjectcontainer.RegisterTypeAs<ApplicationSettings, IApplicationSettings>();
+            iobjectcontainer.RegisterTypeAs<FrameworkSettings, IFrameworkSettings>();
+            iobjectcontainer.RegisterTypeAs<ExtentReport, IExtentReport>();
+            iobjectcontainer.RegisterTypeAs<ExtentFeatureReport, IExtentFeatureReport>();
+            iobjectcontainer.RegisterTypeAs<ChromeWebDriver, IChromeWebDriver>();
+            iobjectcontainer.RegisterTypeAs<EdgeWebDriver, IEdgeWebDriver>();
 
-            container.RegisterTypeAs<Drivers, IDrivers>();
+            iobjectcontainer.RegisterTypeAs<Drivers, IDrivers>();
 
+            Console.WriteLine("Dependencies registered successfully.");
 
+            iobjectcontainer = CoreContainerConfig.GetContainer(iobjectcontainer);
+            Console.WriteLine("Container configuration completed.");
 
             // Register more dependencies here as needed
         }

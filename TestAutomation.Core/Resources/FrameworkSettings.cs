@@ -48,6 +48,8 @@ namespace TestAutomation.Core.Resources
                 ExtentReportPortalUrl = Environment.GetEnvironmentVariable("EXTENT_REPORT_PORTAL_URL");
                 ExtentReportToPortal = Environment.GetEnvironmentVariable("EXTENT_REPORT_TO_PORTAL");
                 StepScreenshot = Environment.GetEnvironmentVariable("STEP_SCREENSHOT")?.ToLower() == "true" ? true : false;
+                DataSetLocation = Environment.GetEnvironmentVariable("DATA_SET_LOCATION") ?? "DataSets";
+
 
 
             }
