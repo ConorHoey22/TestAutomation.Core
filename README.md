@@ -54,6 +54,8 @@ Ensure the following NuGet packages are installed in your project:
 
 ## 📁 Test Cases 
 | `Login/`            | Valid Credentials                              |
+| `Login/`            | Invalid Credentials                            |
+
 
 
 We can then use Extent Reports  
@@ -61,7 +63,7 @@ We can then use Extent Reports
 <img width="2546" height="623" alt="image" src="https://github.com/user-attachments/assets/b8d5338c-8fb6-457e-bc79-461d5ab9c955" />
 
 
-Future developments / plans  - Jenkins or hook it up to Github Actions  
+## 📁  Future developments / Plans  - Hook up the framework to Jenkins or Github Actions  
 
 
 
