@@ -16,6 +16,8 @@ using TestAutomation.Core.Runner;
 using TestAutomation.Core.Reports;
 using WebDriverManager;
 using TestAutomation.Core.DriverController;
+using AventStack.ExtentReports.Gherkin.Model;
+using AventStack.ExtentReports;
 
 
 namespace TestAutomation.Core.BBD_Hooks
@@ -25,6 +27,7 @@ namespace TestAutomation.Core.BBD_Hooks
     {
         IDrivers _idrivers;
         private IWebDriver _iwebDriver;
+
 
         private readonly IObjectContainer _container;
         private readonly BBD_Runner _runner;
@@ -115,6 +118,14 @@ namespace TestAutomation.Core.BBD_Hooks
         {
 
             Console.WriteLine("HOOK - AfterStep started");
+
+            var stepInfo = scenarioContext.StepContext.StepInfo;
+            var stepText = stepInfo.Text;
+            var stepKeyword = stepInfo.StepDefinitionType.ToString(); // Given, When, Then, etc.
+
+
+
+
             try
             {
                 _idrivers = iobjectContainer.Resolve<IDrivers>();
@@ -132,6 +143,9 @@ namespace TestAutomation.Core.BBD_Hooks
                     string base64 = null;
                     base64 = _idrivers.GetScreenshot();
                     extentReport.Fail(scenarioContext.StepContext.StepInfo.Text, base64);
+
+                
+                
                 }
                 else
                 {

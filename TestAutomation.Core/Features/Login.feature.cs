@@ -104,11 +104,11 @@ namespace TestAutomation.Core.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Login with valid credentials")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
+        [NUnit.Framework.CategoryAttribute("validLogin")]
         public async global::System.Threading.Tasks.Task LoginWithValidCredentials()
         {
             string[] tagsOfScenario = new string[] {
-                    "tag1"};
+                    "validLogin"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Login with valid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 6
@@ -129,6 +129,38 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
 #line 9
  await testRunner.ThenAsync("the user should be redirected to the dashboard", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
+#line hidden
+            }
+            await this.ScenarioCleanupAsync();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Attempts to login with invalid credentials")]
+        [NUnit.Framework.CategoryAttribute("invalidLogin")]
+        public async global::System.Threading.Tasks.Task AttemptsToLoginWithInvalidCredentials()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "invalidLogin"};
+            global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
+            global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("Attempts to login with invalid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 13
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                await this.ScenarioStartAsync();
+#line 14
+ await testRunner.GivenAsync("the user is on the login page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+#line hidden
+#line 15
+ await testRunner.WhenAsync("the user enters invalid credentials", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 16
+ await testRunner.ThenAsync("validation should appear", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
