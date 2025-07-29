@@ -61,8 +61,11 @@ Ensure the following NuGet packages are installed in your project:
 
 ## 📁 Reporting
 
-We can then use Extent Reports 
-<img width="2546" height="623" alt="image" src="https://github.com/user-attachments/assets/b8d5338c-8fb6-457e-bc79-461d5ab9c955" />
+Extent Reports 
+
+below is an Example of the Format used in the Extent report showing the scenarios and within each scenario has is own test steps and images attached of the Test run 
+<img width="1260" height="536" alt="image" src="https://github.com/user-attachments/assets/89a8a099-0ece-4532-b33b-f8a34648205e" />
+
 
 
 ## 📁  Future developments / Plans  - Hook up the framework to Jenkins or Github Actions  
