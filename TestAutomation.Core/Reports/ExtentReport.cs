@@ -35,7 +35,7 @@ namespace TestAutomation.Core.Reports
             }
             else
             {
-                _scenario.Log(AventStack.ExtentReports.Status.Pass, AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
+                _scenario.Log(AventStack.ExtentReports.Status.Pass, msg, AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
             }
         }
 
