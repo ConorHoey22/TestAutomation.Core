@@ -58,6 +58,7 @@ Ensure the following NuGet packages are installed in your project:
 | ------------------------- | -------------------------------------------------------- |
 | `Login/`            | Valid Credentials                              |
 | `Login/`            | Invalid Credentials                            |
+| `Checkout/`            | Checkout Functionality                      |
 
 ## 📁 Reporting
 
