@@ -44,15 +44,6 @@ namespace TestAutomation.Core.Steps
         public void ThenTheUserShouldBeRedirectedToTheDashboard()
         {
 
-            //if (!_loginPage.IsUserOnDashboard())
-            //{
-            //    Assert.Fail();
-            //}
-            //else
-            //{
-            //    Assert.Pass();
-            //}
-
             Assert.IsTrue(_loginPage.IsUserOnDashboard(), "User was not redirected to the dashboard.");
 
         }
