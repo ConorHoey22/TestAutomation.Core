@@ -1,6 +1,6 @@
 # Test Automation Framework
 
-A robust **Test Automation Framework** built using **C#**, **.NET**, **Selenium**, and **Reqnroll** (Cucumber-style BDD for .NET). 
+**Test Automation Framework** built using **C#**, **.NET**, **Selenium**, and **Reqnroll** (Cucumber-style BDD for .NET). 
 ---
 
 ## 🚀 Tech Stack
