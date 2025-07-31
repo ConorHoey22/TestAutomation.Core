@@ -1,6 +1,14 @@
 # Test Automation Framework
 
 **Test Automation Framework** built using **C#**, **.NET**, **Selenium**, and **Reqnroll** (Cucumber-style BDD for .NET). 
+
+------
+
+Within this Test Automation Framework built using C#, .NET, Selenium, and Reqnroll
+- The Page Object Model (POM) design pattern is used to represent each web page or UI component as a separate class.
+- Element locators using Selenium WebDriver
+- Reusable methods for interacting with the page (e.g. entering text, clicking buttons)
+-  Abstraction of UI logic, keeping step definitions clean and focused on business behavior
 ---
 
 ## 🚀 Tech Stack
