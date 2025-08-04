@@ -15,12 +15,12 @@ Scenario: User is able to remove an item from the cart
 	When the user clicks on remove button for a specific item
 	Then the item should be removed from the cart successfully
 	
+
 @removeFromCartOnCartPage
 Scenario: User is able to remove an item from the cart within the product page
 	Given the user is on the cart page 
-	When the user clicks on remove button for a specific item
+	When the user clicks on remove button for a specific item from the cart page
 	Then the item should be removed from the cart successfully
-
 
 
 @successfulCheckout

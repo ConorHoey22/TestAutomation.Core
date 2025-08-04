@@ -18,6 +18,8 @@ namespace TestAutomation.Core.Resources
         public string username { get; set; }
         public string password { get; set; }
 
+        public string productName { get; set; }
+
         public ApplicationSettings()
         {
             LoadApplicationSettings(); // 🟢 Ensure environment is loaded when the class is created
@@ -43,8 +45,9 @@ namespace TestAutomation.Core.Resources
                 url = Environment.GetEnvironmentVariable("URL");
                 username = Environment.GetEnvironmentVariable("USERNAME");
                 password = Environment.GetEnvironmentVariable("PASSWORD");
+                productName = Environment.GetEnvironmentVariable("PRODUCT_NAME");
 
-   
+
             }
                 
 

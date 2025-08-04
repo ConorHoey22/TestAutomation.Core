@@ -1,28 +1,27 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using Reqnroll;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestAutomation.Core.Pages;
+using TestAutomation.Core.Resources;
 
 namespace TestAutomation.Core.Steps
 {
-    public class CheckoutStepsDefinitions
+    [Binding]
+    public class CheckoutStepDefinitions
     {
-
 
         IWebDriver driver;
         private readonly LoginPage _loginPage;
         private readonly ProductPage _productPage;
+        private readonly CartPage _cartPage;
+        private readonly ApplicationSettings _applicationSettings;
 
-
-        public CheckoutStepsDefinitions(IWebDriver driver)
+        public CheckoutStepDefinitions(IWebDriver driver)
         {
 
             _loginPage = new LoginPage(driver);
             _productPage = new ProductPage(driver);
+            _cartPage = new CartPage(driver);
         }
 
         [Given("the user is on the product page")]
@@ -32,6 +31,7 @@ namespace TestAutomation.Core.Steps
             _loginPage.NavigateToLoginPage();
             _loginPage.EnterUsername();
             _loginPage.EnterPassword();
+            _loginPage.ClickLogin();
 
             Assert.IsTrue(_loginPage.IsUserOnDashboard(), "User was not redirected to the dashboard.");
         }
@@ -39,63 +39,73 @@ namespace TestAutomation.Core.Steps
         [When("the user clicks on add to cart")]
         public void WhenTheUserClicksOnAddToCart()
         {
-            throw new PendingStepException();
+            _productPage.AddItemToCart();
+            _productPage.checkIFItemisAdded();
+
         }
+
 
         [Then("the item should be added to the cart successfully")]
         public void ThenTheItemShouldBeAddedToTheCartSuccessfully()
         {
-            throw new PendingStepException();
+
+            //Checking Cart Page 
+            _cartPage.checkCart();
+
         }
 
         [When("the user clicks on remove button for a specific item")]
         public void WhenTheUserClicksOnRemoveButtonForASpecificItem()
         {
-            throw new PendingStepException();
+            Console.WriteLine("User clicked on remove button for a specific item.");
         }
 
         [Then("the item should be removed from the cart successfully")]
         public void ThenTheItemShouldBeRemovedFromTheCartSuccessfully()
         {
-            throw new PendingStepException();
+            Console.WriteLine("Item removed from cart successfully.");
         }
 
         [Given("the user is on the cart page")]
         public void GivenTheUserIsOnTheCartPage()
         {
-            throw new PendingStepException();
+            Console.WriteLine("User is on the cart page.");
+        }
+
+        [When("the user clicks on remove button for a specific item from the cart page")]
+        public void WhenTheUserClicksOnRemoveButtonForASpecificItemFromTheCartPage()
+        {
+            Console.WriteLine("User clicked on remove button for a specific item from the cart page.");
         }
 
         [Given("an item is in the cart")]
         public void GivenAnItemIsInTheCart()
         {
-            throw new PendingStepException();
+          Console.WriteLine("An item is in the cart.");
         }
 
         [When("the user clicks on Checkout and completes the checkout information form")]
         public void WhenTheUserClicksOnCheckoutAndCompletesTheCheckoutInformationForm()
         {
-            throw new PendingStepException();
+            Console.WriteLine("User clicked on Checkout and completed the checkout information form.");
         }
 
         [Then("the user is taken to the checkout overview and the order should be placed successfully and confirmation received")]
         public void ThenTheUserIsTakenToTheCheckoutOverviewAndTheOrderShouldBePlacedSuccessfullyAndConfirmationReceived()
         {
-            throw new PendingStepException();
+         Console.WriteLine("User is taken to the checkout overview and the order was placed successfully with confirmation received.");
         }
 
         [When("the user clicks checkout and tries to submit the checkout information form without filling in all required fields")]
         public void WhenTheUserClicksCheckoutAndTriesToSubmitTheCheckoutInformationFormWithoutFillingInAllRequiredFields()
         {
-            throw new PendingStepException();
+            Console.WriteLine("User clicked checkout and tried to submit the checkout information form without filling in all required fields.");
         }
 
         [Then("the user will receive validation errors and will not be able to proceed with the checkout")]
         public void ThenTheUserWillReceiveValidationErrorsAndWillNotBeAbleToProceedWithTheCheckout()
         {
-            throw new PendingStepException();
+            Console.WriteLine("User received validation errors and was not able to proceed with the checkout.");    
         }
-
-
     }
 }

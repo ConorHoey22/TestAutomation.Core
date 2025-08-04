@@ -36,10 +36,9 @@ namespace TestAutomation.Core.WebDrivers
         {
             var options = new ChromeOptions();
             options.AddArgument("--start-maximized");
-            options.AddArgument("--disable-infobars");
-            options.AddArgument("--disable-extensions");
-            options.AddArgument("--disable-gpu");
-            options.AddArgument("--no-sandbox");
+      
+            options.AddArgument("-guest");
+      
             //     options.AddArgument("--headless"); // Uncomment if you want to run in headless mode ( Used for CI setup) 
 
             options.AddUserProfilePreference("download.default_directory", _frameworkSettings.DataSetLocation);

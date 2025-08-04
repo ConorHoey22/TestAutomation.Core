@@ -175,7 +175,7 @@ this.ScenarioInitialize(scenarioInfo);
                     "removeFromCartOnCartPage"};
             global::System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new global::System.Collections.Specialized.OrderedDictionary();
             global::Reqnroll.ScenarioInfo scenarioInfo = new global::Reqnroll.ScenarioInfo("User is able to remove an item from the cart within the product page", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 19
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((global::Reqnroll.TagHelper.ContainsIgnoreTag(scenarioInfo.CombinedTags) || global::Reqnroll.TagHelper.ContainsIgnoreTag(featureTags)))
@@ -185,13 +185,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 await this.ScenarioStartAsync();
-#line 20
+#line 21
  await testRunner.GivenAsync("the user is on the cart page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
-#line 21
- await testRunner.WhenAsync("the user clicks on remove button for a specific item", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
-#line hidden
 #line 22
+ await testRunner.WhenAsync("the user clicks on remove button for a specific item from the cart page", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");
+#line hidden
+#line 23
  await testRunner.ThenAsync("the item should be removed from the cart successfully", ((string)(null)), ((global::Reqnroll.Table)(null)), "Then ");
 #line hidden
             }

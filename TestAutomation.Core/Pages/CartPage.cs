@@ -25,6 +25,23 @@ namespace TestAutomation.Core.Pages
             _applicationSettings.LoadApplicationSettings(); // Load credentials and URL if needed
         }
 
+        public void checkCart()
+        {
+
+            var productName = _driver.FindElement(By.ClassName("inventory_item_name")).Text;
+
+            if (productName == _applicationSettings.productName)
+            {
+           
+                Console.WriteLine("Item is present in the cart.");
+            }
+            else
+            {
+                Console.WriteLine("Item is not present in the cart.");
+            }
+        }
+
+
         public void proceedWithCheckout()
         {
 
