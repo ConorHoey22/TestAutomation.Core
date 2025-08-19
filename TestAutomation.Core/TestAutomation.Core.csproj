@@ -36,12 +36,12 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
     <PackageReference Include="Reqnroll" Version="2.4.1" />
     <PackageReference Include="Reqnroll.NUnit" Version="2.4.1" />
-    <PackageReference Include="Selenium.Support" Version="4.34.0" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.34.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="138.0.7204.16800" />
-    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="138.0.3351.65" />
+    <PackageReference Include="Selenium.Support" Version="4.35.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.35.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="139.0.7258.6600" />
+    <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="138.0.3351.121" />
     <PackageReference Include="SeleniumExtras.WaitHelpers" Version="1.0.2" />
-    <PackageReference Include="WebDriverManager" Version="2.17.5" />
+    <PackageReference Include="WebDriverManager" Version="2.17.6" />
   </ItemGroup>
 
   <ItemGroup>

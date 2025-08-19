@@ -15,5 +15,6 @@ namespace TestAutomation.Core.Abstraction
         void Warning(string msg, string base64);
         void Error(string msg, string base64);
         void Fatal(string msg, string base64);
+        void Info(string msg, string base64);
     }
 }

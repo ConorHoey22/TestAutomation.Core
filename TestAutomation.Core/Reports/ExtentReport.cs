@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AventStack.ExtentReports;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,6 +64,15 @@ namespace TestAutomation.Core.Reports
         public void Fatal(string msg, string base64)
         {
             _scenario.Log(AventStack.ExtentReports.Status.Fatal, msg, AventStack.ExtentReports.MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64).Build());
+        }
+
+        public void Info(string message, string base64Image = null)
+        {
+            if (string.IsNullOrEmpty(base64Image))
+                _scenario.Log(Status.Info, message);
+            else
+                _scenario.Log(Status.Info, message,
+                    MediaEntityBuilder.CreateScreenCaptureFromBase64String(base64Image, "screenshot").Build());
         }
     }
 }

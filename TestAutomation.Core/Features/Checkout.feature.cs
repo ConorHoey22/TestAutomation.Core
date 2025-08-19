@@ -154,7 +154,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 await this.ScenarioStartAsync();
 #line 14
- await testRunner.GivenAsync("the user is on the product page", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
+ await testRunner.GivenAsync("the user is on the product page and has added an item to the cart", ((string)(null)), ((global::Reqnroll.Table)(null)), "Given ");
 #line hidden
 #line 15
  await testRunner.WhenAsync("the user clicks on remove button for a specific item", ((string)(null)), ((global::Reqnroll.Table)(null)), "When ");

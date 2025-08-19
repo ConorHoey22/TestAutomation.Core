@@ -24,6 +24,21 @@ namespace TestAutomation.Core.Steps
             _cartPage = new CartPage(driver);
         }
 
+        [Given("the user is on the product page and has added an item to the cart")]
+        public void GivenTheUserIsOnTheProductPageAndHasAddedAnItemToTheCart()
+        {
+            //Login in Test User
+            _loginPage.NavigateToLoginPage();
+            _loginPage.EnterUsername();
+            _loginPage.EnterPassword();
+            _loginPage.ClickLogin();
+
+            // adding item to cart
+            _productPage.AddItemToCart();
+
+        }
+
+
         [Given("the user is on the product page")]
         public void GivenTheUserIsOnTheProductPage()
         {
@@ -57,19 +72,34 @@ namespace TestAutomation.Core.Steps
         [When("the user clicks on remove button for a specific item")]
         public void WhenTheUserClicksOnRemoveButtonForASpecificItem()
         {
+            _productPage.RemoveItemFromCart();
+
             Console.WriteLine("User clicked on remove button for a specific item.");
         }
 
         [Then("the item should be removed from the cart successfully")]
         public void ThenTheItemShouldBeRemovedFromTheCartSuccessfully()
         {
+          
             Console.WriteLine("Item removed from cart successfully.");
         }
+
+
+
+
 
         [Given("the user is on the cart page")]
         public void GivenTheUserIsOnTheCartPage()
         {
-            Console.WriteLine("User is on the cart page.");
+
+            //Login in Test User
+            _loginPage.NavigateToLoginPage();
+            _loginPage.EnterUsername();
+            _loginPage.EnterPassword();
+            _loginPage.ClickLogin();
+
+            // adding item to cart
+            _productPage.AddItemToCart();
         }
 
         [When("the user clicks on remove button for a specific item from the cart page")]
@@ -78,22 +108,48 @@ namespace TestAutomation.Core.Steps
             Console.WriteLine("User clicked on remove button for a specific item from the cart page.");
         }
 
+
+
+        /// <summary>
+        /// /We are below defining the steps for Checkout feature - CURENTLY WORKING ON IT
+        /// </summary>
+
         [Given("an item is in the cart")]
         public void GivenAnItemIsInTheCart()
         {
-          Console.WriteLine("An item is in the cart.");
+        
+            //Login in Test User
+            _loginPage.NavigateToLoginPage();
+            _loginPage.EnterUsername();
+            _loginPage.EnterPassword();
+            _loginPage.ClickLogin();
+
+            // adding item to cart
+            _productPage.AddItemToCart();
+            
+            // check if item is added to the cart + navigate to the cartpage
+            _productPage.checkIFItemisAdded();
+
+            Console.WriteLine("An item is in the cart.");
         }
+
 
         [When("the user clicks on Checkout and completes the checkout information form")]
         public void WhenTheUserClicksOnCheckoutAndCompletesTheCheckoutInformationForm()
         {
+
+            _cartPage.proceedWithCheckout();
+
             Console.WriteLine("User clicked on Checkout and completed the checkout information form.");
         }
 
         [Then("the user is taken to the checkout overview and the order should be placed successfully and confirmation received")]
         public void ThenTheUserIsTakenToTheCheckoutOverviewAndTheOrderShouldBePlacedSuccessfullyAndConfirmationReceived()
         {
-         Console.WriteLine("User is taken to the checkout overview and the order was placed successfully with confirmation received.");
+           
+            _cartPage.completeCheckoutInformation();
+            Console.WriteLine("User is taken to the checkout overview and the order was placed successfully with confirmation received.");
+        
         }
 
         [When("the user clicks checkout and tries to submit the checkout information form without filling in all required fields")]

@@ -11,7 +11,7 @@ Scenario: User is able to add an items to the cart
 	
 @removeFromCartOnProductPage
 Scenario: User is able to remove an item from the cart
-	Given the user is on the product page 
+	Given the user is on the product page and has added an item to the cart
 	When the user clicks on remove button for a specific item
 	Then the item should be removed from the cart successfully
 	

@@ -44,11 +44,30 @@ namespace TestAutomation.Core.Pages
             button.Click();
         }
 
+
+        public void checkIFItemisRemoved()
+        {
+            // Check if the item is removed from the cart
+            var cartIcon = _driver.FindElement(By.ClassName("shopping_cart_link"));
+            var cartItemCount = _driver.FindElements(By.ClassName("shopping_cart_badge")).Count;
+            // Check if the item count in the cart is zero
+            if (cartItemCount == 0)
+            {
+                Console.WriteLine("Item is removed from the cart successfully.");
+                cartIcon.Click();
+            }
+            else
+            {
+                Console.WriteLine("Item is not removed from the cart.");
+            }
+        }
+
         public void checkIFItemisAdded()
         {
             
             var cartIcon = _driver.FindElement(By.ClassName("shopping_cart_link"));
 
+            
             var cartItemCount = _driver.FindElement(By.ClassName("shopping_cart_badge")).Text;
             // Check if the item count in the cart is correct
             if (cartItemCount == "1")
@@ -66,6 +85,7 @@ namespace TestAutomation.Core.Pages
 
         }
 
+    
         public void FilterProducts()
         {
 
